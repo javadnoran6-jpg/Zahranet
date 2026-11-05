@@ -1,9 +1,0 @@
-<resources>
-    <color name="bg">#FF0A0420</color>
-    <color name="card">#FF1A0F3D</color>
-    <color name="line">#FF2E1D66</color>
-    <color name="violet">#FF7B2FFF</color>
-    <color name="violet2">#FFA855F7</color>
-    <color name="dim">#FF9B8EC9</color>
-    <color name="white">#FFFFFFFF</color>
-</resources>

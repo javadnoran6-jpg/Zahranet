@@ -1,11 +1,11 @@
 name: Build APK
+
 on:
-  workflow_dispatch:
   push:
-    branches: [main, master]
+  workflow_dispatch:
 
 jobs:
-  apk:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,25 +13,16 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: 17
 
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.9'
+          gradle-version: 8.9
 
-      - name: Official Gradle Wrapper (replaces the bootstrap scripts)
-        run: gradle wrapper --gradle-version 8.9
-
-      - name: Fetch real native components (Aether core + hev-socks5-tunnel)
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: bash scripts/fetch_native.sh
-
-      - name: Build APK
-        run: ./gradlew --no-daemon assembleRelease
+      - name: Build debug APK
+        run: gradle assembleDebug --no-daemon
 
       - uses: actions/upload-artifact@v4
         with:
-          name: ZAHRANET-apk
-          path: app/build/outputs/apk/release/app-release.apk
-          if-no-files-found: error
+          name: Ariana-apk
+          path: app/build/outputs/apk/debug/*.apk

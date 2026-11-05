@@ -1,6 +1,0 @@
-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/bg" />
-    <foreground>
-        <inset android:drawable="@drawable/ic_shield_violet" android:inset="25%" />
-    </foreground>
-</adaptive-icon>

@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "ZAHRANET-ANDROID"
+rootProject.name = "Ariana"
 include(":app")
