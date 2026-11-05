@@ -34,7 +34,7 @@ case "$PICK" in
   *.tar.gz|*.tgz)  tar -xzf "$W/aether/$PICK" -C "$W/aether/x" ;;
   *)               cp "$W/aether/$PICK" "$W/aether/x/aether" ;;
 esac
-BIN=$(find "$W/aether/x" -type f \( -name aether -o -name 'aether-*' -o -name 'aether_*' \) ! -name '*.sha256' | head -1)
+BIN=$(find "$W/aether/x" -type f \( -name aether -o -name 'aether-*' -o -name 'aether_*' \) ! -name '*.sha256' ! -name '*.txt' ! -path '*/LICENSES/*' | head -1)
 [ -n "$BIN" ] || { echo "aether binary not found inside $PICK" >&2; exit 1; }
 if command -v file >/dev/null; then
   file "$BIN" | grep -qiE 'aarch64|ARM aarch64' || { echo "Binary is not arm64: $(file "$BIN")" >&2; exit 1; }
